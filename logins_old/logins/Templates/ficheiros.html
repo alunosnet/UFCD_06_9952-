@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<h1>Área segura</h1>  
+<h2>Utilizador</h2> 
+
+<a href="/logout">Terminar sessão</a>
+
+<form enctype="multipart/form-data" method="post">
+    Fotografia:<input type="file" name="ficheiro"/><br>
+    <input type="submit" value="Enviar"/>
+</form>
+
+{% endblock %}
