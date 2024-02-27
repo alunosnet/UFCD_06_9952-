@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        async function atualizarOpcoes()
+        {
+            let categoria=document.getElementById("categorias").value;
+            let resposta=await fetch("http://127.0.0.1:5000/get_opcoes?categoria="+categoria)
+            let opcoes=await resposta.json();
+            let select_opcoes=document.getElementById("opcoes");
+            select_opcoes.innerHTML="";
+            opcoes.forEach(opcao => {
+                let novo=document.createElement("option");
+                novo.value=opcao;
+                novo.text=opcao;
+                select_opcoes.appendChild(novo);
+            });
+        }
+    </script>
+</head>
+<body>
+    <h2>Escolha uma categoria</h2>
+    <select id="categorias" onchange="atualizarOpcoes()">
+        <option value="frutas">Frutas</option>
+        <option value="carros">Carros</option>
+    </select>
+    <h2>Opções</h2>
+    <select id="opcoes">
+        <!--Opções aparecem aqui-->
+    </select>
+</body>
+</html>
